@@ -8,6 +8,7 @@ import {
 	useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import Splash from "./src/views/SplashScreen";
+import { RecoilRoot } from "recoil";
 
 function Demo() {
 	const insets = useSafeAreaInsets();
@@ -35,27 +36,29 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
 	return (
-		<SafeAreaProvider>
-			<NavigationContainer>
-				<Stack.Navigator
-					initialRouteName="Home"
-					screenOptions={{ headerShown: false }}
-				>
-					<Stack.Screen name="Home">
-						{() => (
-							<Tab.Navigator
-								initialRouteName="Analitics"
-								tabBar={() => null}
-								screenOptions={{ headerShown: false }}
-							>
-								<Tab.Screen name="Analitics" component={Splash} />
-								<Tab.Screen name="Profile" component={Splash} />
-							</Tab.Navigator>
-						)}
-					</Stack.Screen>
-					<Stack.Screen name="Settings" component={Splash} />
-				</Stack.Navigator>
-			</NavigationContainer>
-		</SafeAreaProvider>
+		<RecoilRoot>
+			<SafeAreaProvider>
+				<NavigationContainer>
+					<Stack.Navigator
+						initialRouteName="Home"
+						screenOptions={{ headerShown: false }}
+					>
+						<Stack.Screen name="Home">
+							{() => (
+								<Tab.Navigator
+									initialRouteName="Analitics"
+									tabBar={() => null}
+									screenOptions={{ headerShown: false }}
+								>
+									<Tab.Screen name="Analitics" component={Splash} />
+									<Tab.Screen name="Profile" component={Splash} />
+								</Tab.Navigator>
+							)}
+						</Stack.Screen>
+						<Stack.Screen name="Settings" component={Splash} />
+					</Stack.Navigator>
+				</NavigationContainer>
+			</SafeAreaProvider>
+		</RecoilRoot>
 	);
 }
