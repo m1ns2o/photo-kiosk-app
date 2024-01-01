@@ -6,6 +6,7 @@ import * as Font from "expo-font";
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import LoginView from "./LoginView";
+import TestView from "./TestView";
 import {
 	RecoilRoot,
 	atom,
@@ -116,6 +117,7 @@ export default function Splash() {
 			onLayout={onLayoutRootView}
 		>
 			<LoginView></LoginView>
+			{/* <TestView></TestView> */}
 		</View>
 	);
 }
